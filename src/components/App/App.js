@@ -1,11 +1,33 @@
 import './App.css';
 import React, { Component } from 'react';
-import SlideContainer from '../SlideContainer/SlideContainer'
+import Slides from '../Slides/Slides'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default class App extends Component {
-  render() {
+  constructor(props){
+    super(props);
+
+    //Initialize with welcome page info
+    this.state = {
+      pageFamily: "welcome",
+      content: ["Mountain Project Flash"]
+    };
+  }
+  
+  // Creates a collection of Slides to display from state.content
+  toDisplay () {
     return(
-      <SlideContainer />
+      <Slides 
+      pageFamily={this.state.pageFamily}
+      content={this.state.content}
+      />
+    )
+  }
+
+   //Returns a scrollable page made of Slides that fetches data as needed
+   render() {
+    return(
+      <>{this.toDisplay()}</>
     )
   }
 }
