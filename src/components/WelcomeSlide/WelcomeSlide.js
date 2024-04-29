@@ -1,5 +1,4 @@
 import './WelcomeSlide.css';
-import {useRef} from "react";
 import gsap from "gsap"; 
 import { useGSAP } from "@gsap/react";
 
@@ -30,11 +29,23 @@ function WelcomeSlide( props ) {
         })
       },
     );
+///////////////////////////////////////////////////
+
+    function mpdata() {
+        fetch("https://www.mountainproject.com/")
+        .then((response) => {
+            console.log(response.json())
+            return response.json();
+        })
+        .then((data) => {
+            let authors = data;
+          })
+      }
 
     return (
     <div className="welcome slide">
         <div className="title">
-        {props.content}
+            {mpdata()}
         </div>
         <input className="search" placeholder="Search for climbs">
         </input>

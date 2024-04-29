@@ -6,9 +6,7 @@ import WelcomeSlide from '../WelcomeSlide/WelcomeSlide'
 function Slides( props ) {
   if (props.pageFamily == "welcome"){
     return (
-        <WelcomeSlide 
-        content={props.content}
-        />
+        <WelcomeSlide/>
     );
   }
 }
