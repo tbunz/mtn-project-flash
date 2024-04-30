@@ -31,17 +31,6 @@ function WelcomeSlide( props ) {
     );
 ///////////////////////////////////////////////////
 
-    function mpdata() {
-        fetch("https://www.mountainproject.com/")
-        .then((response) => {
-            console.log(response.json())
-            return response.json();
-        })
-        .then((data) => {
-            let authors = data;
-          })
-      }
-
     return (
     <div className="welcome slide">
         <div className="title">
