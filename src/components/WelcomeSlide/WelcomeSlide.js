@@ -1,35 +1,9 @@
 import './WelcomeSlide.css';
-
-import gsap from "gsap"; 
-import { useGSAP } from "@gsap/react";
-
-gsap.registerPlugin(useGSAP);
+import { MountAnimationWelcome } from "../gAnimations/gAnimations"
 
 function WelcomeSlide( props ) {
-    //Initial animations
-    useGSAP(() => {
-        gsap.from(".title", {
-            opacity: 0,
-            duration: 2,
-            ease: "power1.in"
-        })
-        gsap.from(".title", {
-            left: "35%",
-            duration: 2,
-            ease: "power1.out"
-        })
-        gsap.from(".search", {
-            opacity: 0,
-            duration: 2,
-            ease: "power1.in"
-        });
-        gsap.from(".search", {
-            top: "80%",
-            duration: 2,
-            ease: "power1.out"
-        })
-      },
-    );
+
+    MountAnimationWelcome()     
 
     // Handler for search input
     async function handleEnter (e)  {
@@ -37,7 +11,7 @@ function WelcomeSlide( props ) {
             
             let pf = props.pageFamily
             let cont = props.content
-            // pageFamily state become welcome + loading
+            // pageFamily state become welcome + loading (mount Loading, animate out welcome)
             pf.push("loading")
             props.updateState({
                 pageFamily: pf, 
@@ -49,13 +23,13 @@ function WelcomeSlide( props ) {
                     return response.json()
                 })
                 .then((data) => {
-                    // When data received, unrender load + welcome, render results
+                    // When data received, unmount Load + Welcome, render results
                     pf = ["results"]
                     props.updateState({
                         pageFamily: pf, 
                         content: data
                         })
-                    console.log("updated")
+                    console.log("searched")
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -65,17 +39,14 @@ function WelcomeSlide( props ) {
     }
     
     return (
-    <div className="welcome slide">
-
+    <>
         <div className="title">
             {props.content}
         </div>
 
         <input onKeyDown={handleEnter} className="search" placeholder="Search Climbs">
         </input>
-
-
-    </div>
+    </>
     );
   
 }

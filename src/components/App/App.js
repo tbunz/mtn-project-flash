@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 
 import WelcomeSlide from '../WelcomeSlide/WelcomeSlide';
+import Load from '../Load/Load'
 
 export default class App extends Component {
   constructor(props){
@@ -18,15 +19,19 @@ export default class App extends Component {
    render() {
     console.log(this.state)
     return(
-      <>
-        {this.state.pageFamily.includes("welcome") ? <WelcomeSlide 
+      <div className="App">
+        {this.state.pageFamily.includes("welcome") ? 
+        <WelcomeSlide 
           pageFamily={this.state.pageFamily}
           content={this.state.content}
           updateState={this.setState}
-        />: <></>}
+        />
+        : <></>}
 
-        {this.state.pageFamily.includes("loading") ? <div>loading</div> : <></>}
-      </>
+        {this.state.pageFamily.includes("loading") ? 
+        <Load/>
+        : <></>}
+      </div>
 
     )
   }
