@@ -9,8 +9,10 @@
     left: 50%;
     top: 40%;
     transform: translate(-50%, -50%); 
-    width: 52vw; 
+    width: 33vw; 
+    
     font-size: 5vw;
+    text-align: center;
 }
 
 .search {
@@ -20,7 +22,7 @@
     transform: translate(-50%, -50%); 
     width: 80vw; 
     
-    font-size: 5vw;
+    font-size: 3vw;
     border-style: solid;
     border-color: black;
     border-width: 0.07em;

@@ -1,4 +1,5 @@
 import './WelcomeSlide.css';
+
 import gsap from "gsap"; 
 import { useGSAP } from "@gsap/react";
 
@@ -29,17 +30,41 @@ function WelcomeSlide( props ) {
         })
       },
     );
-///////////////////////////////////////////////////
 
+    // Handler for search input
+    async function handleEnter (e)  {
+        if (e.key === 'Enter' && e.target.value) { 
+            fetch("http://64.23.204.175/search/" + e.target.value)
+                .then((response) => {
+                    return response.json()
+                })
+                .then(() =>{
+
+                })
+                .then((data) => {
+                    console.log(data)
+                })
+                .catch(function(error) {
+                    console.log(error);
+                  });
+           
+        }
+    }
+    
     return (
     <div className="welcome slide">
+
         <div className="title">
-            {mpdata()}
+            Mtn Proj Flash
         </div>
-        <input className="search" placeholder="Search for climbs">
+
+        <input onKeyDown={handleEnter} className="search" placeholder="Search Climbs">
         </input>
+
+
     </div>
     );
-  }
+  
+}
   
   export default WelcomeSlide;
