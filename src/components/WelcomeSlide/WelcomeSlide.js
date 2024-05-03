@@ -34,15 +34,28 @@ function WelcomeSlide( props ) {
     // Handler for search input
     async function handleEnter (e)  {
         if (e.key === 'Enter' && e.target.value) { 
+            
+            let pf = props.pageFamily
+            let cont = props.content
+            // pageFamily state become welcome + loading
+            pf.push("loading")
+            props.updateState({
+                pageFamily: pf, 
+                 content: cont
+                })
+
             fetch("http://64.23.204.175/search/" + e.target.value)
                 .then((response) => {
                     return response.json()
                 })
-                .then(() =>{
-
-                })
                 .then((data) => {
-                    console.log(data)
+                    // When data received, unrender load + welcome, render results
+                    pf = ["results"]
+                    props.updateState({
+                        pageFamily: pf, 
+                        content: data
+                        })
+                    console.log("updated")
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -55,7 +68,7 @@ function WelcomeSlide( props ) {
     <div className="welcome slide">
 
         <div className="title">
-            Mtn Proj Flash
+            {props.content}
         </div>
 
         <input onKeyDown={handleEnter} className="search" placeholder="Search Climbs">
