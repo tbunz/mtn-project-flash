@@ -11,4 +11,4 @@ This project is entirely educational and not being used to generate any income. 
 
 ### Citations
 - Mountain Project (all information about rock climbs including: static images, names, descriptions, comments, reviews, GPS data)
-- radiotowerguy on turbosquid.com (https://www.turbosquid.com/3d-models/free-rock-climbing-cam-3d-model/274417)
+
