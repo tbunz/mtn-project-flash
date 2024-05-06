@@ -13,6 +13,7 @@ function ClimbDisplay() {
             <div id="climbDescription" className="cdInfo">
             Description
             </div>
+            <div>under construction ...</div>
         </div>
     )
 }

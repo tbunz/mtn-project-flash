@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-function Display() {
+function Display( props ) {
     // On interaction animations
     const container = useRef();
     const { contextSafe } = useGSAP({scope: container}); 
@@ -22,16 +22,25 @@ function Display() {
 
     const onClickHandler = contextSafe((e) => {
         gsap.to(".oneClimb", {opacity: "0.3", duration: "0.25"});
+        let pf = props.pageFamily
+        let cont = props.content
+       
+        if (!(pf.includes("climb"))){
+            pf.push("climb")
+            props.updateState({
+                pageFamily: pf, 
+                content: cont
+                })
+            }
     });
 
-
-    let data = fake_testing_input
+    let data = props.content["climbs"]
 
     return(
         <div className="display" ref={container}>
             {
-                data.map((climb) =>
-                    <div key={climb["link"]} className="oneClimb" id={climb["link"]} 
+                data.map((climb, index) =>
+                    <div key={"climb" + String(index)} className="oneClimb" id={"climb" + String(index)} 
                     onMouseEnter={hoverHandlerIn} onMouseLeave={hoverHandlerOut} onClick={onClickHandler}>
                     
                     {climb["name"] + " | " + climb["location"] + " | " + climb["rating"]}

@@ -7,7 +7,7 @@ function Load() {
 
     return(
         <div className="load">
-            Under Construction, see console
+            Loading under construction ...
         </div>
     );
 }

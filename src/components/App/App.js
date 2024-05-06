@@ -12,7 +12,7 @@ export default class App extends Component {
     this.setState = this.setState.bind(this)
     //Initialize with welcome page info
     this.state = {
-      pageFamily: ["display", "climb"],
+      pageFamily: ["welcome"],
       content: "Mtn Proj Flash"
     };
   }
@@ -34,12 +34,20 @@ export default class App extends Component {
         <Load/>
         : <></>}
 
-        {this.state.pageFamily.includes("display") ? 
-        <Display/>
+        {this.state.pageFamily.includes("results") ? 
+        <Display
+          pageFamily={this.state.pageFamily}
+          content={this.state.content}
+          updateState={this.setState}
+        />
         :<></>}
 
         {this.state.pageFamily.includes("climb") ? 
-        <ClimbDisplay/>
+        <ClimbDisplay
+          pageFamily={this.state.pageFamily}
+          content={this.state.content}
+          updateState={this.setState}
+        />
         : <></>}
       </div>
 
