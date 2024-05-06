@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import WelcomeSlide from '../WelcomeSlide/WelcomeSlide';
 import Load from '../Load/Load'
+import Display from '../Display/Display'
+import ClimbDisplay from '../Display/ClimbDisplay'
 
 export default class App extends Component {
   constructor(props){
@@ -10,7 +12,7 @@ export default class App extends Component {
     this.setState = this.setState.bind(this)
     //Initialize with welcome page info
     this.state = {
-      pageFamily: ["welcome"],
+      pageFamily: ["display", "climb"],
       content: "Mtn Proj Flash"
     };
   }
@@ -30,6 +32,14 @@ export default class App extends Component {
 
         {this.state.pageFamily.includes("loading") ? 
         <Load/>
+        : <></>}
+
+        {this.state.pageFamily.includes("display") ? 
+        <Display/>
+        :<></>}
+
+        {this.state.pageFamily.includes("climb") ? 
+        <ClimbDisplay/>
         : <></>}
       </div>
 

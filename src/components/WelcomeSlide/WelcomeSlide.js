@@ -18,7 +18,7 @@ function WelcomeSlide( props ) {
                  content: cont
                 })
 
-            fetch("http://64.23.204.175/search/" + e.target.value)
+            fetch("https://climbingapi.com/search/" + e.target.value)
                 .then((response) => {
                     return response.json()
                 })
