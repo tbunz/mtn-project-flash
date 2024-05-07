@@ -28,6 +28,8 @@ src/components/
 - React App
 - GSAP animations
 - ThreeJS (react-three-fiber) 3D models
+- Hosted on DigitalOcean droplet
+- Served by Nginx
 
 
 
