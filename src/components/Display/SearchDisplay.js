@@ -1,24 +1,14 @@
-import "./Display.css"
-
+import "./SearchDisplay.css"
+import { MoveCanvasDisplay } from "../gAnimations/gAnimations"
 import { useRef } from "react";
 import gsap from "gsap"; 
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-function Display( props ) {
-    // On mount animation for canvas
-    useGSAP(() => {
-      gsap.set(".canvas-container", {
-        position: "fixed",
-        width: "50vw"
-      })
-      gsap.to(".canvas-container", {
-          top: "0%", 
-          right: "0%"
-      })
-    },
-  );
+function SearchDisplay( props ) {
+    
+    MoveCanvasDisplay()
 
     // On interaction animations
     const container = useRef();
@@ -26,18 +16,18 @@ function Display( props ) {
     
     const hoverHandlerIn = contextSafe((e) => {
     gsap.to("#" + e.target.id, {width: "80%", fontSize: "3vw", 
-    duration: 0.5});
+      duration: 0.5});
     });
     const hoverHandlerOut = contextSafe((e) => {
     gsap.to("#" + e.target.id, {width: "70%", fontSize: "2vw",
-    duration: 0.5});
+      duration: 0.5});
     });
-
     const onClickHandler = contextSafe((e) => {
         gsap.to(".oneClimb", {opacity: "0.3", duration: "0.25"});
         let pf = props.pageFamily
         let cont = props.content
        
+        // If individiual climb NOT already being viewed, then render ClimbDisplay
         if (!(pf.includes("climb"))){
             pf.push("climb")
             props.updateState({
@@ -54,7 +44,7 @@ function Display( props ) {
             {
                 data.map((climb, index) =>
                     <div key={"climb" + String(index)} className="oneClimb" id={"climb" + String(index)} 
-                    onMouseEnter={hoverHandlerIn} onMouseLeave={hoverHandlerOut} onClick={onClickHandler}>
+                          onMouseEnter={hoverHandlerIn} onMouseLeave={hoverHandlerOut} onClick={onClickHandler}>
                     
                     {climb["name"] + " | " + climb["location"] + " | " + climb["rating"]}
                 
@@ -128,4 +118,4 @@ const fake_testing_input = [
                 }
 
     ]
-export default Display
+export default SearchDisplay

@@ -6,7 +6,7 @@ gsap.registerPlugin(useGSAP);
 // TODO - Make these all  gsap timelines. Way better for coordinating order
 //          of animations. Not relevant for all right now, but could be.
 
-// These are all GSAP animations that occur during/before mount/unmount. Not while rendered
+// These are all GSAP animations that occur during/before mount/unmount. NOT while rendered/on event
 
 // Called in WelcomeSlides
 export function MountAnimationWelcome() {
@@ -58,5 +58,19 @@ export function UnmountAnimationWelcome() {
             ease: "power1.in"
         })
       },
+    );
+}
+
+export function MoveCanvasDisplay() {
+    useGSAP(() => {
+        gsap.set(".canvas-container", {
+            position: "fixed",
+            width: "50vw"
+        })
+        gsap.to(".canvas-container", {
+            top: "0%", 
+            right: "0%"
+        })
+        }
     );
 }

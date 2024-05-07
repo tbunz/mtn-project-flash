@@ -8,6 +8,7 @@ Utilizes data from project @ https://github.com/tbunz/mtnprojapi (public facing 
 ### Summary of Tools
 - React App
 - GSAP animations
+- ThreeJS (react-three-fiber) 3D models
 
 
 

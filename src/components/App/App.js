@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 import WelcomeSlide from '../WelcomeSlide/WelcomeSlide';
 import Load from '../Load/Load'
-import Display from '../Display/Display'
+import SearchDisplay from '../Display/SearchDisplay'
 import ClimbDisplay from '../Display/ClimbDisplay'
 import Tube  from '../Three/Three'
 
@@ -39,7 +39,7 @@ export default class App extends Component {
         : <></>}
 
         {this.state.pageFamily.includes("results") ? 
-        <Display
+        <SearchDisplay
           pageFamily={this.state.pageFamily}
           content={this.state.content}
           updateState={this.setState}
