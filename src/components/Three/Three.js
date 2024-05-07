@@ -1,8 +1,8 @@
 import './Three.css'
 import React from 'react'
 import { Canvas, useLoader, useFrame } from '@react-three/fiber'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
-import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js'
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader.js";
 
 // All Three.js rendered 3d things
 function Tube( props ) {
