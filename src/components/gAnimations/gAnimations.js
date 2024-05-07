@@ -6,6 +6,8 @@ gsap.registerPlugin(useGSAP);
 // TODO - Make these all  gsap timelines. Way better for coordinating order
 //          of animations. Not relevant for all right now, but could be.
 
+// These are all GSAP animations that occur during/before mount/unmount. Not while rendered
+
 // Called in WelcomeSlides
 export function MountAnimationWelcome() {
     useGSAP(() => {

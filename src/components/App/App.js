@@ -5,6 +5,7 @@ import WelcomeSlide from '../WelcomeSlide/WelcomeSlide';
 import Load from '../Load/Load'
 import Display from '../Display/Display'
 import ClimbDisplay from '../Display/ClimbDisplay'
+import Tube  from '../Three/Three'
 
 export default class App extends Component {
   constructor(props){
@@ -22,6 +23,9 @@ export default class App extends Component {
     console.log(this.state)
     return(
       <div className="App">
+
+        <Tube/>
+
         {this.state.pageFamily.includes("welcome") ? 
         <WelcomeSlide 
           pageFamily={this.state.pageFamily}
@@ -49,6 +53,7 @@ export default class App extends Component {
           updateState={this.setState}
         />
         : <></>}
+        
       </div>
 
     )

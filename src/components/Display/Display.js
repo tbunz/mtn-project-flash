@@ -7,6 +7,19 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 function Display( props ) {
+    // On mount animation for canvas
+    useGSAP(() => {
+      gsap.set(".canvas-container", {
+        position: "fixed",
+        width: "50vw"
+      })
+      gsap.to(".canvas-container", {
+          top: "0%", 
+          right: "0%"
+      })
+    },
+  );
+
     // On interaction animations
     const container = useRef();
     const { contextSafe } = useGSAP({scope: container}); 

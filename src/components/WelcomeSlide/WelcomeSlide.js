@@ -1,5 +1,5 @@
 import './WelcomeSlide.css';
-import { MountAnimationWelcome } from "../gAnimations/gAnimations"
+import { MountAnimationWelcome } from '../gAnimations/gAnimations'
 
 function WelcomeSlide( props ) {
 
