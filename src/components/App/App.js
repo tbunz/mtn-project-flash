@@ -13,7 +13,7 @@ export default class App extends Component {
     this.setState = this.setState.bind(this)
     //Initialize with welcome page info
     this.state = {
-      pageFamily: ["welcome"],
+      pageFamily:["welcome"],
       content: "Mtn Proj Flash"
     };
   }
@@ -24,7 +24,11 @@ export default class App extends Component {
     return(
       <div className="App">
 
-        <Tube/>
+        <Tube
+        pageFamily={this.state.pageFamily}
+        content={this.state.content}
+        updateState={this.setState}
+        />
 
         {this.state.pageFamily.includes("welcome") ? 
         <WelcomeSlide 
@@ -34,11 +38,15 @@ export default class App extends Component {
         />
         : <></>}
 
-        {this.state.pageFamily.includes("loading") ? 
-        <Load/>
+        {this.state.pageFamily.includes("load") ? 
+        <Load
+        pageFamily={this.state.pageFamily}
+        content={this.state.content}
+        updateState={this.setState}
+        />
         : <></>}
 
-        {this.state.pageFamily.includes("results") ? 
+        {this.state.pageFamily.includes("search-display") ? 
         <SearchDisplay
           pageFamily={this.state.pageFamily}
           content={this.state.content}
@@ -46,7 +54,7 @@ export default class App extends Component {
         />
         :<></>}
 
-        {this.state.pageFamily.includes("climb") ? 
+        {this.state.pageFamily.includes("climb-display") ? 
         <ClimbDisplay
           pageFamily={this.state.pageFamily}
           content={this.state.content}

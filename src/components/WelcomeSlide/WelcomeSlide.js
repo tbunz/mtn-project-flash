@@ -1,10 +1,10 @@
 import './WelcomeSlide.css';
+import Header from '../Header/Header'
 import { MountAnimationWelcome } from '../gAnimations/gAnimations'
 
 function WelcomeSlide( props ) {
 
     MountAnimationWelcome()     
-
     // Handler for search input
     async function handleEnter (e)  {
         if (e.key === 'Enter' && e.target.value) { 
@@ -12,7 +12,7 @@ function WelcomeSlide( props ) {
             let pf = props.pageFamily
             let cont = props.content
             // pageFamily state become welcome + loading (mount Loading, animate out welcome)
-            pf.push("loading")
+            pf.push("load")
             props.updateState({
                 pageFamily: pf, 
                  content: cont
@@ -24,7 +24,7 @@ function WelcomeSlide( props ) {
                 })
                 .then((data) => {
                     // When data received, unmount Load + Welcome, render results
-                    pf = ["results"]
+                    pf = ["search-display"]
                     props.updateState({
                         pageFamily: pf, 
                         content: data

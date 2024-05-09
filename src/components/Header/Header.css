@@ -1,0 +1,20 @@
+.header {
+    top: 0%; 
+    margin: 0%;
+
+    width: 100%; 
+    height: 5%; 
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.back {
+    height: 100%;
+    cursor: pointer;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.07em;
+    border-radius: 0.2em; 
+}

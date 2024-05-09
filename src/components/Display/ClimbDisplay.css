@@ -1,6 +1,6 @@
 #climbDisplay {
     position: fixed;   
-    width: 50vw;
+    width: 50%;
     min-height: 100vh; 
     top: 0%; 
     right: 0%; 
@@ -15,7 +15,7 @@
     font-size: 3vw;
     text-align: center;
 
-    background-image: linear-gradient(#ffdead,#ffdef0);
+    background-color: #e1e4e8;
 }
 
 .cdInfo {

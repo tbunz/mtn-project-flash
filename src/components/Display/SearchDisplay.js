@@ -1,16 +1,14 @@
 import "./SearchDisplay.css"
-import { MoveCanvasDisplay } from "../gAnimations/gAnimations"
+import Header from "../Header/Header"
+
 import { useRef } from "react";
 import gsap from "gsap"; 
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-function SearchDisplay( props ) {
-    
-    MoveCanvasDisplay()
-
-    // On interaction animations
+function SearchDisplay( props ) {    
+    // On Event animations
     const container = useRef();
     const { contextSafe } = useGSAP({scope: container}); 
     
@@ -28,8 +26,8 @@ function SearchDisplay( props ) {
         let cont = props.content
        
         // If individiual climb NOT already being viewed, then render ClimbDisplay
-        if (!(pf.includes("climb"))){
-            pf.push("climb")
+        if (!(pf.includes("climb-display"))){
+            pf.push("climb-display")
             props.updateState({
                 pageFamily: pf, 
                 content: cont
@@ -37,10 +35,24 @@ function SearchDisplay( props ) {
             }
     });
 
+    // State handler for back button
+    function backHandler() {
+      let pf = ["welcome"]
+      let cont = "Mtn Proj Flash"
+        props.updateState({
+            pageFamily: pf, 
+            content: cont
+            })
+    }
+
+
     let data = props.content["climbs"]
+    //  Uncomment below for testing input
+    //  let data = fake_testing_input
 
     return(
         <div className="display" ref={container}>
+          <Header link={false} onClickHandler={backHandler}/>
             {
                 data.map((climb, index) =>
                     <div key={"climb" + String(index)} className="oneClimb" id={"climb" + String(index)} 
