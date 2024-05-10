@@ -1,5 +1,4 @@
 import './WelcomeSlide.css';
-import Header from '../Header/Header'
 import { MountAnimationWelcome } from '../gAnimations/gAnimations'
 
 function WelcomeSlide( props ) {
@@ -29,7 +28,6 @@ function WelcomeSlide( props ) {
                         pageFamily: pf, 
                         content: data
                         })
-                    console.log("searched")
                 })
                 .catch(function(error) {
                     console.log(error);

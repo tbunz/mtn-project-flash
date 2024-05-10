@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import gsap from "gsap"; 
 import { useGSAP } from "@gsap/react";
 
@@ -56,6 +55,18 @@ export function UnmountAnimationWelcome() {
         gsap.to(".search", {
             top: "80%",
             duration: 1,
+            ease: "power1.in"
+        })
+      },
+    );
+}
+
+// Called in ClimbDisplay
+export function MountAnimationClimbDisplay() {
+    useGSAP(() => {
+        gsap.to("#climbDisplay", {
+            opacity: 100,
+            duration: 1.5,
             ease: "power1.in"
         })
       },

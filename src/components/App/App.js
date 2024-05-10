@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import WelcomeSlide from '../WelcomeSlide/WelcomeSlide';
 import Load from '../Load/Load'
 import SearchDisplay from '../Display/SearchDisplay'
-import ClimbDisplay from '../Display/ClimbDisplay'
+
 import Tube  from '../Three/Three'
 
 export default class App extends Component {
@@ -20,7 +20,7 @@ export default class App extends Component {
 
    //Returns slides based on pageFamilies that are active (in state list)
    render() {
-    console.log(this.state)
+    // console.log(this.state)
     return(
       <div className="App">
 
@@ -53,15 +53,6 @@ export default class App extends Component {
           updateState={this.setState}
         />
         :<></>}
-
-        {this.state.pageFamily.includes("climb-display") ? 
-        <ClimbDisplay
-          pageFamily={this.state.pageFamily}
-          content={this.state.content}
-          updateState={this.setState}
-        />
-        : <></>}
-        
       </div>
 
     )

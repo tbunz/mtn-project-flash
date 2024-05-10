@@ -8,7 +8,7 @@ function Load() {
 
     return(
         <div className="load">
-            Loading under construction ...
+            Loading
         </div>
     );
 }

@@ -29,11 +29,11 @@ function Tube( props ) {
     let tl = gsap.timeline()
     // If loading from Welcome to Display
     if (props.pageFamily.includes("load")){
-        tl.to(".canvas-container", { right: "-10%", duration: 1})
+        tl.to(".canvas-container", { right: "0%", duration: 1})
     }
     // If not loading, then going back to Welcome
     else if (!(props.pageFamily.includes("search-display"))) {
-        tl.to(".canvas-container", { right: "13.5%", duration: 1})
+        tl.to(".canvas-container", { right: "25%", duration: 1})
     }
         
     

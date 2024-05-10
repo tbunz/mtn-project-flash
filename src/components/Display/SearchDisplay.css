@@ -30,3 +30,19 @@
 
     cursor: pointer;
 }
+
+.empty {
+    display: table-cell;
+    vertical-align: middle;
+
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    width: 70%;
+    
+    background-color: #e1e4e8;
+
+    border-style: solid;
+    border-color: black;
+    border-width: 0.07em;
+    border-radius: 0.5em; 
+}
