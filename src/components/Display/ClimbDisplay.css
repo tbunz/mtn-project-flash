@@ -17,9 +17,7 @@
 
     background-color: #e1e4e8;
 
-    overflow: scroll;
-
-    opacity: 0%;
+    overflow-y: scroll;
 }
 
 .cdInfo {

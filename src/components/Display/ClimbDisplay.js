@@ -1,32 +1,68 @@
 import "./ClimbDisplay.css"
-import { MountAnimationClimbDisplay } from "../gAnimations/gAnimations"
+import { useState, useEffect } from "react"
 
-function ClimbDisplay( props ) {
-    MountAnimationClimbDisplay()
-    let display = props.c_display
+
+function ClimbDisplay( props ) {   
+    const [climb_info, setClimb_Info] = useState({});
+  
+    useEffect(() => {
+      // API IS SLOW ... get info for each climb main page right when this page loads
+      let data = props.content["climbs"]
+      let count = 0
+      for (let climb in data){
+        count += 1
+        let id = ((data[climb]["link"]).split("/"))[4]
+        let name = data[climb]["name"]
+        let climbs = {}
+        climbs[id] = name
+        
+        fetch("https://climbingapi.com/climb_info/" + encodeURIComponent(JSON.stringify(climbs)))
+            .then((response) =>
+              response.json()
+            )
+            .then((c_resp) => {
+              let key = c_resp[0]["uid"]
+              setClimb_Info(climb_info => ({ ...climb_info, [key]: c_resp}));
+            })
+          }
+    }, []);
+
     return(
-      <>{
-        !(Object.keys(display).length === 0) ? 
+    <>
+      {props.display_Active && 
+      
         <div id="climbDisplay">
-            <div id="climbName" className="cdInfo">
-            {display.name}
+      
+          {(props.active_Climb in climb_info) ? 
+            <>
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["name"]}
             </div>
-            {display.grade && <div id="climbFacts" className="cdInfo">
-            {display.grade} | {display.type}
-            </div>}
-            {display.fa && <div id="climbFA" className="cdInfo">
-            FA: {display.fa}
-            </div>}
-            <div id="climbDescription" className="cdInfo">
-            {display.description}
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["grade"]}
             </div>
-            <div id="climbPro" className="cdInfo">
-            {display.protection}
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["type"]}
             </div>
-            {(!display.fa) && <div>Some elements were not found... under construction</div>}
-        </div>
-        : <div id="climbDisplay">loading</div>
-      } </>
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["fa"]}
+            </div>
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["description"]}
+            </div>
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["protection"]}
+            </div>
+            <div className="cdInfo"> 
+              {climb_info[props.active_Climb][0]["under_construction"]}
+            </div>
+            </>
+
+           :<div className="cdInfo">Loading</div>}
+        
+        </div>}
+    
+    </>
     )
 }
 export default ClimbDisplay
